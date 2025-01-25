@@ -1,4 +1,4 @@
-import { HelpCircle } from "lucide-react";
+import { NotebookPen } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -22,7 +22,7 @@ export default function Questions() {
   return (
     <div className="gap-6 rounded-xl border bg-card text-card-foreground shadow-lg p-5">
       <div className="flex items-center justify-center space-x-2">
-        <HelpCircle className="h-6 w-6 text-primary mt-1" />
+        <NotebookPen className="h-6 w-6 text-primary mt-1" />
         <h1 className="text-2xl font-bold text-center">Preguntas</h1>
       </div>
       <div className="my-4 text-sm text-muted-foreground text-center">
@@ -31,11 +31,13 @@ export default function Questions() {
           validaciones y cómo calcular las calificaciones finales.
         </p>
       </div>
-      <div className="text-left mx-4">
+      <div className="text-left mx-3">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
-            <AccordionTrigger>1. ¿Cómo funciona el sistema?</AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
+            <AccordionTrigger className="text-left">
+              1. ¿Cómo funciona el sistema?
+            </AccordionTrigger>
+            <AccordionContent className="text-left text-sm text-muted-foreground">
               El sistema permite subir un archivo Excel con calificaciones de
               alumnos. Una vez cargado el archivo, el usuario puede ingresar las
               ponderaciones de cada rubro (tareas, asistencias, participación,
@@ -48,10 +50,10 @@ export default function Questions() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               2. ¿Se necesita un formato específico para el Excel que se subirá?
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
+            <AccordionContent className="text-left text-sm text-muted-foreground">
               Sí, el Excel debe cumplir con las siguientes características:
               <div className="flex flex-wrap gap-1 mt-2">
                 {columns.map((column, index) => (
@@ -66,10 +68,10 @@ export default function Questions() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               3. ¿El sistema tiene validaciones para errores?
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
+            <AccordionContent className="text-left text-sm text-muted-foreground">
               Sí, el sistema incluye las siguientes validaciones:
               <ul className="list-disc pl-6 space-y-2">
                 <li>
@@ -92,11 +94,11 @@ export default function Questions() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               4. ¿Qué sucede si el archivo Excel contiene datos incorrectos o no
               cumple con el formato?
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
+            <AccordionContent className="text-left text-sm text-muted-foreground">
               El sistema notificará al usuario con un mensaje de error
               detallado, indicando qué parte del archivo no cumple con las
               especificaciones. En este caso, no se permitirá continuar hasta
@@ -104,11 +106,11 @@ export default function Questions() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               5. ¿El sistema permite cambiar las ponderaciones después de subir
               el Excel?
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
+            <AccordionContent className="text-left text-sm text-muted-foreground">
               Sí, el usuario puede modificar las ponderaciones en el formulario
               tantas veces como desee antes de presionar el botón de calcular.
               Sin embargo, una vez realizado el cálculo, no se pueden hacer
@@ -116,10 +118,10 @@ export default function Questions() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-6">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               6. ¿Es posible agregar más tareas en el futuro?
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
+            <AccordionContent className="text-left text-sm text-muted-foreground">
               No, el sistema está configurado para trabajar con cinco tareas
               específicas. Si se desea agregar más tareas, será necesario
               realizar modificaciones en el diseño del sistema.

@@ -60,12 +60,12 @@ function App() {
                 <div className="flex items-center space-x-2">
                   <div className="grid flex-1 gap-2"></div>
                 </div>
-                <DialogFooter className="flex sm:justify-start text-sm">
+                <DialogFooter className="flex flex-row sm:flex-nowrap sm:justify-start justify-center text-sm gap-2">
                   <a
                     href="https://github.com/IssacPP10/grading-system"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-3 py-2 bg-slate-700 text-white font-bold rounded-lg hover:bg-slate-800 transition"
+                    className="flex items-center gap-1 px-3 py-2 bg-slate-700 text-white font-bold rounded-lg hover:bg-slate-800 transition w-24"
                   >
                     <Github className="w-5 h-5" />
                     GitHub
@@ -74,7 +74,7 @@ function App() {
                     href="https://www.linkedin.com/in/issac-puentes/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition"
+                    className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition w-28"
                   >
                     <Linkedin className="w-5 h-5" />
                     Linkedin
