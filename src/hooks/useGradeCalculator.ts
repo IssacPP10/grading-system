@@ -54,8 +54,7 @@ export function useGradeCalculator() {
       return;
     }
   
-    const calculated = studentData.map(student => {
-      console.log(`Calculando calificación para: ${student['Nombre del Alumno']}`);
+    const calculated = studentData.map(student => {      
   
       // Verificar que los datos de tareas sean números válidos
       const taskGrades = [
@@ -71,36 +70,27 @@ export function useGradeCalculator() {
       if (!allTasksValid) {
         toast.error(`Las calificaciones de las tareas no son válidas para el alumno ${student['Nombre del Alumno']}`);
         return { ...student, calificacionFinal: null };
-      }
-  
-      console.log(`Calificaciones de tareas para ${student['Nombre del Alumno']}:`, taskGrades);
+      }      
   
       // Calcular el promedio de las tareas
-      const taskAverage = taskGrades.reduce((sum, grade) => sum + grade, 0) / taskGrades.length;
-      console.log(`Promedio de tareas para ${student['Nombre del Alumno']}:`, taskAverage);
+      const taskAverage = taskGrades.reduce((sum, grade) => sum + grade, 0) / taskGrades.length;      
   
       // Validar otros campos
       const isValid = !isNaN(student['Asistencias']) && !isNaN(student['Examen']) && !isNaN(student['Participacion']);
       if (!isValid) {
         toast.error(`Faltan datos válidos para el alumno ${student['Nombre del Alumno']}`);
         return { ...student, calificacionFinal: null };
-      }
-  
-      console.log(`Asistencias: ${student['Asistencias']}, Examen: ${student['Examen']}, Participación: ${student['Participacion']}`);
+      }      
   
       // Calcular la calificación final con ponderación
       const finalGrade =
         (taskAverage * weights[0].weight / 100) +
         (student['Asistencias'] * weights[1].weight / 100) +
         (student['Examen'] * weights[2].weight / 100) +
-        (student['Participacion'] * weights[3].weight / 100);
-      
-      console.log(`Calificación final antes de ajustar para ${student['Nombre del Alumno']}:`, finalGrade);
+        (student['Participacion'] * weights[3].weight / 100);            
   
       // Redondear la calificación final a dos decimales
-      const finalGradeClamped = parseFloat(finalGrade.toFixed(3)); // Ajusta la precisión a 3 decimales si lo prefieres
-  
-      console.log(`Calificación final ajustada para ${student['Nombre del Alumno']}:`, finalGradeClamped);
+      const finalGradeClamped = parseFloat(finalGrade.toFixed(3));     
   
       // Devolver el resultado con la calificación final calculada
       return {

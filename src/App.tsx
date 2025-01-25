@@ -1,9 +1,26 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { GraduationCap, Calculator, Download } from 'lucide-react';
-import { WeightInput } from '@/components/WeightInput';
-import { FileUploader } from '@/components/FileUploader';
-import { useGradeCalculator } from '@/hooks/useGradeCalculator';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  GraduationCap,
+  Calculator,
+  Download,
+  HelpCircle,
+  Github,
+  Linkedin,
+} from "lucide-react";
+import { WeightInput } from "@/components/WeightInput";
+import { FileUploader } from "@/components/FileUploader";
+import { useGradeCalculator } from "@/hooks/useGradeCalculator";
+import Questions from "./components/Questions";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 function App() {
   const {
@@ -14,13 +31,58 @@ function App() {
     handleFileUpload,
     calculateGrades,
     downloadResults,
-    calculatedGrades
+    calculatedGrades,
   } = useGradeCalculator();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-6 lg:p-8">
       <div className="max-w-2xl mx-auto space-y-6">
-        <Card className="shadow-lg">
+        <Card className="shadow-lg relative">
+          <div className="absolute top-3 right-3">
+            <Dialog>
+              <DialogTrigger asChild>
+                <HelpCircle className="h-6 w-6 text-primary cursor-pointer" />
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Grading System</DialogTitle>
+                  <DialogDescription>
+                    Este sistema de calificaciones fue creado con el propósito
+                    de ayudar a los maestros a calcular los promedios finales de
+                    manera más eficiente, además de servir como una práctica
+                    para mejorar mis habilidades en el desarrollo de
+                    herramientas con React y Vite. A continuación, dejo los
+                    enlaces al repositorio para que esté disponible para su uso
+                    o para que quienes lo deseen puedan contribuir. ¡Muchas
+                    gracias! 🙂
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex items-center space-x-2">
+                  <div className="grid flex-1 gap-2"></div>
+                </div>
+                <DialogFooter className="flex sm:justify-start text-sm">
+                  <a
+                    href="https://github.com/IssacPP10/grading-system"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 px-3 py-2 bg-slate-700 text-white font-bold rounded-lg hover:bg-slate-800 transition"
+                  >
+                    <Github className="w-5 h-5" />
+                    GitHub
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/issac-puentes/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 px-3 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    Linkedin
+                  </a>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
           <CardHeader className="space-y-1">
             <div className="flex items-center justify-center space-x-2">
               <GraduationCap className="h-6 w-6 text-primary" />
@@ -48,7 +110,11 @@ function App() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-2 px-4 bg-secondary rounded-lg">
                   <span className="font-medium">Total:</span>
-                  <span className={`font-bold ${totalWeight === 100 ? 'text-green-600' : 'text-red-600'}`}>
+                  <span
+                    className={`font-bold ${
+                      totalWeight === 100 ? "text-green-600" : "text-red-600"
+                    }`}
+                  >
                     {totalWeight}%
                   </span>
                 </div>
@@ -96,6 +162,8 @@ function App() {
             </CardContent>
           </Card>
         )}
+
+        <Questions />
       </div>
     </div>
   );
